@@ -1,9 +1,10 @@
+import "@/styles/global.css";
 import type { Metadata } from "next";
-import "@/styles/globals.css";
+import AppConfig from "@/config/appConfig";
 
 export const metadata: Metadata = {
-    title: "Great Comcat Engineering",
-    description: "",
+    title: AppConfig.metadata.title,
+    description: AppConfig.metadata.description,
 };
 
 export default function RootLayout({
