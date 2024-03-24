@@ -1,6 +1,8 @@
-import "@/styles/global.css";
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 import AppConfig from "@/config/appConfig";
+import NavMenu from "@/components/navigation/nav-menu";
+import { ThemeProvider } from "@/context/theme-provider";
 
 export const metadata: Metadata = {
     title: AppConfig.metadata.title,
@@ -13,8 +15,18 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body>{children}</body>
+        <html lang="en" suppressHydrationWarning>
+            <body>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="dark"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <NavMenu />
+                    {children}
+                </ThemeProvider>
+            </body>
         </html>
     );
 }
