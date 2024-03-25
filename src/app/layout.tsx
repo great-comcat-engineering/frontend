@@ -1,13 +1,11 @@
+"use client";
+
 import "@/styles/globals.css";
-import type { Metadata } from "next";
-import AppConfig from "@/config/appConfig";
 import NavMenu from "@/components/navigation/nav-menu";
 import { ThemeProvider } from "@/context/theme-provider";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-export const metadata: Metadata = {
-    title: AppConfig.metadata.title,
-    description: AppConfig.metadata.description,
-};
+const queryClient = new QueryClient();
 
 export default function RootLayout({
     children,
@@ -17,15 +15,17 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body>
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="light"
-                    enableSystem
-                    disableTransitionOnChange
-                >
-                    <NavMenu />
-                    {children}
-                </ThemeProvider>
+                <QueryClientProvider client={queryClient}>
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="light"
+                        enableSystem
+                        disableTransitionOnChange
+                    >
+                        <NavMenu />
+                        {children}
+                    </ThemeProvider>
+                </QueryClientProvider>
             </body>
         </html>
     );

@@ -12,9 +12,8 @@ const AppConfig = {
         icons: []
     },
     apiEndpoints: {
-        dev: "https://api.greatcomcatengineering.com",
-        qa: "https://api.greatcomcatengineering.com",
-        prod: "https://api.greatcomcatengineering.com",
+        base: "https://api.greatcomcatengineering.com",
+        version: "/v0",
     },
     localStorageKeys: {
         theme: "gce-theme",
